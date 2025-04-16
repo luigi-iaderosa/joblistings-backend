@@ -33,6 +33,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $primaryKey = 'id';
     /**
      * The attributes that should be cast.
      *
@@ -41,4 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function role(){
+        return $this->belongsToMany(Role::class,'role_user','id_user','id_role','id','id_role');
+
+    }
 }

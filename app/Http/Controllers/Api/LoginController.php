@@ -15,13 +15,14 @@ class LoginController extends Controller{
             ], 401);
         }
         else {
-            $user   = User::where('email', $request->email)->firstOrFail();
+            $user   = User::with('role')->where('email', $request->email)->firstOrFail();
             $token  = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
                 'message'       => 'Login success',
                 'access_token'  => $token,
-                'token_type'    => 'Bearer'
+                'token_type'    => 'Bearer',
+                'role'=> $user->role
             ]);
         }
     }
