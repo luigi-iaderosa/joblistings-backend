@@ -26,6 +26,7 @@ class JobsController extends Controller
             $job = Job::find(
                 $request->id
             );
+            $job->load('company');
             return response()->json($job);
         }
         return response()->json(['error'=>'Unqualified user'],400);
@@ -40,6 +41,8 @@ class JobsController extends Controller
                 'description'=>$request->description,
                 'salary'=>$request->salary,
                 'location'=>$request->location,
+                'id_company'=>$request->company_id,
+                'job_type'=>$request->type
             ]);
             return response()->json($job);
         }
@@ -53,6 +56,8 @@ class JobsController extends Controller
                 'description'=>$request->description,
                 'salary'=>$request->salary,
                 'location'=>$request->location,
+                'id_company'=>$request->id_company,
+                'job_type'=>$request->job_type
             ]);
             return response()->json($job);
         }

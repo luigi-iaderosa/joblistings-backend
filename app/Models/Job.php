@@ -13,4 +13,11 @@ class Job extends Model
     protected $primaryKey = 'id_job';
     protected $guarded = ['id_job'];
 
+    public function company(){
+        return $this->hasOne(Company::class,'id_company','id_company');
+    }
+
+
+
+
 }

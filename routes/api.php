@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\Users\UserInfoController;
+use App\Http\Controllers\Companies\CompaniesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:sanctum')->get('users/me',UserInfoController::class.'@userInfo');
+
 Route::middleware('auth:sanctum')->get('jobs',JobsController::class.'@jobs');
 Route::middleware('auth:sanctum')->get('jobs/{id}',JobsController::class.'@view');
 Route::middleware('auth:sanctum')->put('jobs/{id}',JobsController::class.'@update');
 Route::middleware('auth:sanctum')->delete('jobs/{id}',JobsController::class.'@delete');
 Route::middleware('auth:sanctum')->post('jobs',JobsController::class.'@create');
-Route::middleware('auth:sanctum')->get('companies',UserInfoController::class.'@userInfo');
 
+Route::middleware('auth:sanctum')->get('companies',CompaniesController::class.'@companies');
+Route::middleware('auth:sanctum')->post('companies',CompaniesController::class.'@create');
+Route::middleware('auth:sanctum')->get('companies/{id}',CompaniesController::class.'@view');
+Route::middleware('auth:sanctum')->put('companies/{id}',CompaniesController::class.'@edit');
+Route::middleware('auth:sanctum')->delete('companies/{id}',CompaniesController::class.'@delete');
