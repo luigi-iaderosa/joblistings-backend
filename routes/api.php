@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->get('jobs/{id}',JobsController::class.'@view'
 Route::middleware('auth:sanctum')->put('jobs/{id}',JobsController::class.'@update');
 Route::middleware('auth:sanctum')->delete('jobs/{id}',JobsController::class.'@delete');
 Route::middleware('auth:sanctum')->post('jobs',JobsController::class.'@create');
+Route::middleware('auth:sanctum')->post('jobs/apply',JobsController::class.'@apply');
 
 Route::middleware('auth:sanctum')->get('companies',CompaniesController::class.'@companies');
 Route::middleware('auth:sanctum')->post('companies',CompaniesController::class.'@create');
