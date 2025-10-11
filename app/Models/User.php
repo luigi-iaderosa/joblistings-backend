@@ -48,4 +48,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class,'role_user','id_user','id_role','id','id_role');
 
     }
+
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class,'id_user','id')->with(['jobPlus']);
+    }
 }

@@ -14,4 +14,13 @@ class Subscription extends Model
     protected $table = 'subscriptions';
     public $timestamps = false;
     
+
+    public function job(){
+        return $this->hasOne(Job::class,'id_job','id_job');
+    }
+
+    public function jobPlus(){
+        return $this->job()->with(['company']);
+    }
+
 }

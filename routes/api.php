@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Jobs\JobsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\Subscriptions\SubscriptionsController;
 use App\Http\Controllers\Api\Users\UserInfoController;
 use App\Http\Controllers\Companies\CompaniesController;
 
@@ -41,3 +42,7 @@ Route::middleware('auth:sanctum')->post('companies',CompaniesController::class.'
 Route::middleware('auth:sanctum')->get('companies/{id}',CompaniesController::class.'@view');
 Route::middleware('auth:sanctum')->put('companies/{id}',CompaniesController::class.'@edit');
 Route::middleware('auth:sanctum')->delete('companies/{id}',CompaniesController::class.'@delete');
+
+
+Route::middleware('auth:sanctum')->get('subscriptions',SubscriptionsController::class.'@subscriptions');
+Route::middleware('auth:sanctum')->delete('subscriptions/delete/{id}',SubscriptionsController::class.'@delete');
