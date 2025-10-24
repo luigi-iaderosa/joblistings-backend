@@ -13,7 +13,7 @@ class Subscription extends Model
     protected $primaryKey = 'id_subscription';
     protected $table = 'subscriptions';
     public $timestamps = false;
-    
+
 
     public function job(){
         return $this->hasOne(Job::class,'id_job','id_job');
@@ -23,4 +23,7 @@ class Subscription extends Model
         return $this->job()->with(['company']);
     }
 
+    public function user(){
+        return $this->hasOne(User::class,'id','id_user');
+    }
 }

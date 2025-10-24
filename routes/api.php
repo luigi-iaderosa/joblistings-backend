@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->put('jobs/{id}',JobsController::class.'@updat
 Route::middleware('auth:sanctum')->delete('jobs/{id}',JobsController::class.'@delete');
 Route::middleware('auth:sanctum')->post('jobs',JobsController::class.'@create');
 Route::middleware('auth:sanctum')->post('jobs/apply',JobsController::class.'@apply');
+Route::middleware('auth:sanctum')->get('jobs/{id}/subscriptions',JobsController::class.'@subscriptions')->name('job-subscriptions');
 
 Route::middleware('auth:sanctum')->get('companies',CompaniesController::class.'@companies');
 Route::middleware('auth:sanctum')->post('companies',CompaniesController::class.'@create');
@@ -45,4 +46,5 @@ Route::middleware('auth:sanctum')->delete('companies/{id}',CompaniesController::
 
 
 Route::middleware('auth:sanctum')->get('subscriptions',SubscriptionsController::class.'@subscriptions');
+Route::middleware('auth:sanctum')->post('subscriptions/change-status',SubscriptionsController::class.'@changeStatus');
 Route::middleware('auth:sanctum')->delete('subscriptions/delete/{id}',SubscriptionsController::class.'@delete');

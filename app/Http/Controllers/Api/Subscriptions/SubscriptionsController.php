@@ -21,4 +21,12 @@ class SubscriptionsController extends Controller
         $target->delete();
         return json_encode(['delete'=>'ok']);
     }
+
+
+    public function changeStatus(Request $request){
+        $target = Subscription::find($request->id_subscription);
+        $target->status = $request->status;
+        $target->save();
+        return json_encode(['change_status'=>'ok']);
+    }
 }
