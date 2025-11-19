@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Jobs\JobsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\QuickSearch\QuickSearchController;
 use App\Http\Controllers\Api\Subscriptions\SubscriptionsController;
 use App\Http\Controllers\Api\Users\UserInfoController;
 use App\Http\Controllers\Companies\CompaniesController;
@@ -46,3 +47,5 @@ Route::middleware('auth:sanctum')->delete('companies/{id}',CompaniesController::
 
 Route::middleware('auth:sanctum')->get('subscriptions',SubscriptionsController::class.'@subscriptions');
 Route::middleware('auth:sanctum')->delete('subscriptions/delete/{id}',SubscriptionsController::class.'@delete');
+
+Route::middleware('auth:sanctum')->get('/quicksearch/jobs',QuickSearchController::class.'@quickSearchJob');
