@@ -8,10 +8,12 @@ use App\Http\Requests\Api\Jobs\ApiJobsApplyToJobRequest;
 use App\Http\Requests\Api\Jobs\ApplyToJobRequest;
 use App\Http\Requests\Api\Jobs\CreateJobRequest;
 use App\Http\Requests\Api\Jobs\DeleteJobRequest;
+use App\Http\Requests\Api\Jobs\JobSubscriptionsRequest;
 use App\Http\Requests\Api\Jobs\UpdateJobRequest;
 use App\Http\Requests\Api\Jobs\ViewJobRequest;
 use App\Models\Job;
 use App\Models\Subscription;
+use Illuminate\Support\Facades\Log;
 
 class JobsController extends Controller
 {
@@ -78,9 +80,16 @@ class JobsController extends Controller
     }
 
 
-    public function apply(ApplyToJobRequest $request){  
+    public function apply(ApplyToJobRequest $request){
         $new =  Subscription::create(['id_user'=>$request->user_id,'id_job'=> $request->job_id,'created_at'=>now()]);
         return response()->json($new);
     }
+
+    public function subscriptions(JobSubscriptionsRequest $request,$id){
+        $subs = Subscription::where('id_job','=',$id)->with('user')->get();
+        return response()->json($subs);
+
+    }
+
 
 }
