@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'env'=> [
+        'GOOGLE_CALENDAR_APPLICATION_NAME'=>env('GOOGLE_CALENDAR_APPLICATION_NAME'),
+        'GOOGLE_SERVICE_ENTITY_FOR_CALENDAR'=>env('GOOGLE_SERVICE_ENTITY_FOR_CALENDAR'),
+        'GOOGLE_CALENDAR_CALENDAR_ID'=>env('GOOGLE_CALENDAR_CALENDAR_ID')
+    ]
 
 ];

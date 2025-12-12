@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Calendar\CalendarController;
 use App\Http\Controllers\Api\Jobs\JobsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -51,3 +52,5 @@ Route::middleware('auth:sanctum')->delete('subscriptions/delete/{id}',Subscripti
 
 Route::middleware('auth:sanctum')->get('/quicksearch/jobs',QuickSearchController::class.'@quickSearchJob');
 Route::middleware('auth:sanctum')->post('subscriptions/change-status',SubscriptionsController::class.'@changeStatus');
+Route::middleware('auth:sanctum')->get('calendar/see-all',CalendarController::class.'@seeAll');
+Route::middleware('auth:sanctum')->post('calendar/add',CalendarController::class.'@aproxAdd');
